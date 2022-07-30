@@ -1,17 +1,26 @@
-variable "organization" {
+variable "username" {
     type = string
 }
 
-variable "key" {
+variable "password" {
      type = string
 }
 
-variable "sonar_cloud_url" {
+variable "appID" {
      type = string
 }
 
 
-variable "project_name" {
+variable "connectionArn" {
      type = string
 }
 
+
+
+variable "bucket_name" {
+    default = "cicd-si3mshady"
+}
+
+variable "bucket_artifacts" {
+  default = "cicd-si3mshady-artifacts"
+}

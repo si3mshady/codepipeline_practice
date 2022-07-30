@@ -1,18 +1,26 @@
-variable "organization" {
+variable "username" {
     type = string
 }
 
-variable "key" {
+variable "password" {
      type = string
 }
 
-variable "sonar_cloud_url" {
-     type = string
-}
-
-
-variable "project_name" {
+variable "appID" {
      type = string
 }
 
 
+variable "connectionArn" {
+     type = string
+}
+
+
+
+variable "s3_bucket" {
+  
+}
+
+variable "s3_artifacts" {
+  
+}

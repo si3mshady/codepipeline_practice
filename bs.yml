@@ -1,0 +1,60 @@
+version: 0.2
+
+env:
+  parameter-store:
+    LOGIN: key
+    URL: url
+    ORG: organization
+    PROJECT: project
+
+
+    #use synk - to evaluate containers
+    #use checkov to evaluate IaC
+
+#     Snyk CLI also supports:
+# Snyk Code scanning
+# Snyk Container scanning including Docker scanning
+# Snyk Infrastructure as Code scanning including Terraform and Kubernetes (K8s) projects
+
+
+# Review scan results
+# Suppress or skip
+# Scan credentials and secrets
+# Scan Kubernetes clusters
+# Scan Terraform plan output and 3rd party modules
+#https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html
+
+phases:
+  install:
+    run-as: root
+    runtime-versions:
+      nodejs: 16
+  pre_build:
+    commands:
+      - apt-get update -y 
+      - apt install software-properties-common -y
+      - add-apt-repository ppa:deadsnakes/ppa
+      - sudo apt install python3.7 -y
+      - sudo apt install python3-pip
+      - sudo python3.7 -m pip install -U checkov
+
+  build:
+    commands:
+      - npm build
+      - mvn install
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - target/messageUtil-1.0.jar
+
+
+
+
+#     sudo apt update
+# sudo apt install software-properties-common
+# sudo add-apt-repository ppa:deadsnakes/ppa
+# sudo apt install python3.7
+# sudo apt install python3-pip
+# sudo python3.7 -m pip install -U checkov #to install or upgrade checkov)
